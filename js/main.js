@@ -900,11 +900,12 @@ $(document).ready(function () {
 
   //click of the start button
   $("#startGame").click(function () {
-    var word = randomPick(words);
+    word = randomPick(words);
     createLetters(word); //generates a new word, creates letters and hide instructions
     console.log(word);
     $(".game-container").show();
     $("#instructions").hide();
+    return word
   });
 
   //click on solution button. Will check for identity of user and solution
@@ -913,7 +914,8 @@ $(document).ready(function () {
       game = false;
     }
     var counter = 0;
-    var userData = $("#user-pick").val();
+    var userData = $("#user-pick").val().toLowerCase();
+  
     var letters = $(".letter").text();
     if (!game) {
       //if game is false begin a new game
@@ -940,7 +942,8 @@ $(document).ready(function () {
         $("#round-level").html(tries); //if solution is not correct tries goes down
       }
       if ($(".letter").length != counter && tries == 0) {
-        alert("hai perso"); //if solution not found and tries are zero, gameOver sequence
+        alert("Hai perso, premi ok per vedere la parola"); //if solution not found and tries are zero, gameOver sequence
+        alert(word);
         gameOver();
       }
       $("#user-pick").val("");
@@ -955,7 +958,7 @@ $(document).ready(function () {
       //check if game is lost, if so begin a new one
       gameOver();
     }
-    var userData = $("#user-pick").val();
+    var userData = $("#user-pick").val().toLowerCase();
     var letters = $(".letter");
     if (userData.length > 1 || userData.length == 0) {
       alert("Hai inserito più di una lettera");
@@ -973,7 +976,8 @@ $(document).ready(function () {
       $("#user-pick").val("");
       $("#round-level").html(tries); //if tries goes to zero  is game over
       if (tries == 0) {
-        alert("Hai perso :( ");
+        alert("Hai perso, premi ok per vedere la parola"); 
+        alert(word);
         gameOver();
       }
     }
