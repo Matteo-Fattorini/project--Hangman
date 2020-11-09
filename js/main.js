@@ -885,17 +885,17 @@ $(document).ready(function () {
   //function for gameOver
   function gameOver() {
     document.querySelectorAll(".letter").forEach((e) => e.remove()); //removes all old letters from DOM
-    var word = randomPick(words); // new word generated
+    word = randomPick(words); // new word generated
     createLetters(word);
     console.log(word);
     game = true;
     $("#solution-btn").text("Soluzione");
     $("#score-text").css("color", "white"); //bring everything to vanilla state
-    tries = 8;
+    tries = 10;
     $("#round-level").html(tries);
   }
 
-  var tries = 8; //max tries
+  var tries = 10; //max tries
   var game = true; //game is defaulted at true
 
   //click of the start button
